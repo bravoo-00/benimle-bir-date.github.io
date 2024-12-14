@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <title>Date ?</title>
   <link rel="stylesheet" href="./style.css">
-
 </head>
 <body>
 <!-- partial:index.partial.html -->
@@ -17,6 +16,10 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <audio id="backgroundAudio" style="display:none;">
+        <source src="jhin.mp4" type="video/mp4">
+    </audio>
+
     <div class="container" id="container">
         <h1 id="title">Aylincim benimle date'e çıkar mısın?</h1>
         <img id="image" src="https://i.hizliresim.com/6948cn7.png" style="max-width:50%;" alt="McQueen">
@@ -28,13 +31,32 @@
     <div id="result" class="hidden">
         <h2>Yuppiii!!!</h2>
         <img id="newImage" src="" alt="New Image">
-  <script src="https://kit.fontawesome.com/4f3ce16e3e.js" crossorigin="anonymous"></script>
     </div>
+
+    <script src="https://kit.fontawesome.com/4f3ce16e3e.js" crossorigin="anonymous"></script>
     <script src="script.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const audio = document.getElementById('backgroundAudio');
+            
+            // Herhangi bir yere tıklandığında müziği çalıştır
+            document.addEventListener('click', function startAudio(e) {
+                // İlk kez tıklandığında çalıştır ve dinleyiciyi kaldır
+                audio.play().then(() => {
+                    audio.loop = true;
+                }).catch(error => {
+                    console.log('Müzik çalıştırılamadı:', error);
+                });
+                
+                // Dinleyiciyi kaldır ki sadece bir kez çalıştırılsın
+                document.removeEventListener('click', startAudio);
+            }, { once: true });
+        });
+    </script>
 </body>
 </html>
 <!-- partial -->
   <script  src="./script.js"></script>
-
 </body>
 </html>
